@@ -1,37 +1,37 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
-from .models import MerchPost
+from .models import Merch
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 
 def home(request):
     context = {
-        'merch': MerchPost.objects.all()
+        'merch': Merch.objects.all()
     }
-    return render(request, 'merch/home.html', context)
+    return render(request, 'merch-home', context)
 
-class MerchPostListView(ListView):
-    model = MerchPost
+class MerchListView(ListView):
+    model = Merch
     template_name = 'merch-home'
     context_object_name = "merch"
     ordering = ['-date_posted']
     paginate_by = 5
 
 
-class MerchPostDetailView(DetailView):
-    model = MerchPost
+class MerchDetailView(DetailView):
+    model = Merch
 
-class MerchPostCreateView(LoginRequiredMixin, CreateView):
-    model = MerchPost
+class MerchCreateView(LoginRequiredMixin, CreateView):
+    model = Merch
     fields = ['title', 'description', 'price', 'catagory', 'img', ]
     def form_valid(self, form): 
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class MerchPostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = MerchPost
+class MerchUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Merch
     fields = ['title', 'description', 'price', 'catagory', 'img', ]
-    def form_valid(self, form): 
+    def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
@@ -41,8 +41,8 @@ class MerchPostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-class MerchPostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = MerchPost
+class MerchDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Merch
     success_url = 'merch/'
 
     def test_func(self):
