@@ -16,16 +16,16 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
 
-class MerchPost(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    price = models.CharField(max_length=100)
-    catagory = models.CharField(max_length=100)
-    img = models.ImageField(blank=True)
-    date_posted = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.title
+# class MerchPost(models.Model):
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     title = models.CharField(max_length=100)
+#     description = models.TextField()
+#     price = models.CharField(max_length=100)
+#     catagory = models.CharField(max_length=100)
+#     img = models.ImageField(blank=True)
+#     date_posted = models.DateTimeField(auto_now_add=True)
+#     def __str__(self):
+#         return self.title
 
-    def get_absolute_url(self):
-        return reverse('mpost-detail', kwargs={'pk': self.pk})
+#     def get_absolute_url(self):
+#         return reverse('mpost-detail', kwargs={'pk': self.pk})
