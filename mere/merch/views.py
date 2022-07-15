@@ -4,16 +4,16 @@ from .models import MerchPost
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 
-def merch(request):
+def home(request):
     context = {
-        'posts': MerchPost.objects.all()
+        'merch': MerchPost.objects.all()
     }
     return render(request, 'merch/home.html', context)
 
 class MerchPostListView(ListView):
     model = MerchPost
-    template_name = 'blog/home.html'
-    context_object_name = "merchposts"
+    template_name = 'merch-home'
+    context_object_name = "merch"
     ordering = ['-date_posted']
     paginate_by = 5
 
