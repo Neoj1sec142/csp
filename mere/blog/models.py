@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
     catagory = models.CharField(max_length=100, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_posted = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
 
@@ -23,7 +23,7 @@ class MerchPost(models.Model):
     price = models.CharField(max_length=100)
     catagory = models.CharField(max_length=100)
     img = models.ImageField(blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_posted = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.title
 
