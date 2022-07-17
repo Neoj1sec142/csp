@@ -6,14 +6,14 @@ from django.contrib.auth.models import User
 
 def home(request):
     context = {
-        'merch': Merch.objects.all()
+        'merchs': Merch.objects.all()
     }
     return render(request, 'merch-home', context)
 
 class MerchListView(ListView):
     model = Merch
     template_name = 'merch-home'
-    context_object_name = "merch"
+    context_object_name = "merchs"
     ordering = ['-date_posted']
     paginate_by = 5
 

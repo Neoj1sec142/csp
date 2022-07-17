@@ -2,7 +2,7 @@
 {% block content %}
 
     <article class="media content-section">
-        <img src="{{object.img.url}}" class="rounded-circle article-image" /> 
+        <img src="{{object.img}}" class="rounded-circle article-image" /> 
         <div class="media-body">
             <div class="article-metadata">
                 <!-- <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a> -->
@@ -16,6 +16,7 @@
             </div>
             <h2 class="article-title">{{ object.title }}</h2>
             <p class="article-content">{{ object.desciption }}</p>
+            <img src="{{object.img}}" />
             </div>
     </article>
 
