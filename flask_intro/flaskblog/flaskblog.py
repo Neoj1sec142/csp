@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SCTKY')
+app.config['SECRET_KEY'] = os.getenv('SCTKY')   
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
